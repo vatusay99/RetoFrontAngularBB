@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 
 <h1 class="mt-3 mb-3">{{titulo_products}}</h1>
-<div class="container" *ngIf="product">
-  <table class="table">
+<div class="container">
+  <table class="table" *ngIf="products.length >=1">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -14,33 +14,22 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>1000</td>
-        <td>4</td>
+      <tr *ngFor="let product of products; let i = index;" >
+        <th scope="row">{{product.id}}</th>
+        <td>{{product.product_name}}</td>
+        <td>{{product.categori}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.cantidad_stock}}</td>
         <td>
-          <button class="btn btn-danger m-2" (click)="deleteProductById(5)">X</button>
+          <button class="btn btn-danger m-2" (click)="deleteProductById(product.id)">X</button>
           <a class="btn btn-warning" (click)="editProductById(1)" >Editar</a>
         </td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
     </tbody>
   </table>
+</div>
+
+<div class="container" *ngIf="products.length==0">
+  <h1 class="text-5xl mt-4 ">No se encontro ningun producto en Base de datos</h1>
 </div>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../product';
 import { ProductService } from '../../service/product.service';
-import { log } from 'console';
+import { Product } from '../interfaces/product.interface';
+import { CreateProduct } from '../interfaces/createProduct.interface';
 
 @Component({
   selector: 'app-product-add',
@@ -11,12 +11,21 @@ import { log } from 'console';
 export class ProductAddComponent implements OnInit {
 
   title_add: string = 'Formulario de creación de producto'
+  public product: Product = {
+    id:0,
+    product_name: '',
+    categori:'',
+    price: 0,
+    cantidad_stock:0,
+  };
 
-  id:number=0;
-  product_name: string = 'default';
-  category: string = '';
-  price: number = 0;
-  cantidad_stock: number= 0;
+
+  public createProduct: CreateProduct = {
+    product_name:'',
+    categori:'',
+    price: 0,
+    cantidad_stock: 0
+  }
 
   constructor(private productService: ProductService){
 
@@ -26,16 +35,12 @@ export class ProductAddComponent implements OnInit {
 
   }
 
+
   addproduct(){
-    let product = new Product(
-      this.id,
-      this.product_name,
-      this.category,
-      this.price,
-      this.cantidad_stock,
-    );
-    console.log(product);
-    this.productService.postProduct(product)
+    const { product_name, categori, price, cantidad_stock} = this.product;
+
+    this.createProduct =  {product_name,categori, price, cantidad_stock}
+    this.productService.postProduct(this.createProduct)
       .subscribe(rest=>console.log(rest));
   }
 

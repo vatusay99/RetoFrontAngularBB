@@ -6,7 +6,7 @@ import { ProductAddComponent } from './product/product-add/product-add.component
 const routes: Routes = [
   {path:'', component: ProductListComponent},
   {path:'add/product', component: ProductAddComponent},
-  // {path:'**', redirectTo:''}
+  {path:'**', redirectTo: ''}
 ];
 
 @NgModule({
