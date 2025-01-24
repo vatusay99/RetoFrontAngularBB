@@ -4,7 +4,7 @@
   <h1>{{title_add}}</h1>
 </div>
 <div class="container">
-  <form class="p-3 mb-2 shadow bg-body rounded">
+  <form class="p-3 mb-2 shadow bg-body rounded" (ngSubmitq)="addproduct()">
     <div class="mb-3">
       <h5>Ingrese los datos para cada campo y luego de click en crear.</h5>
     </div>
@@ -55,8 +55,7 @@
       <div id="stockHelp" class="form-text">Campo stock es requerido</div>
     </div>
 
-    <button type="submit" class="btn btn-primary" (click)="addproduct()">Crear</button>
-
+    <button type="submit" class="btn btn-primary">Crear</button>
   </form>
   <br><br><br>
 </div>

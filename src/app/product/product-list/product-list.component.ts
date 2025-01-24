@@ -47,7 +47,7 @@ export class ProductListComponent implements OnInit {
       data => {
         console.log({data});
         // this.products = data;
-        console.log(this.products);
+        // console.log(this.products);
       }
     );
   }
@@ -59,7 +59,6 @@ export class ProductListComponent implements OnInit {
   }
 
   editProductById(id: number){
-    console.log({id});
 
     // this.productService.editProductById(product, id).subscribe(
     //   ()=> this.listProductService()
