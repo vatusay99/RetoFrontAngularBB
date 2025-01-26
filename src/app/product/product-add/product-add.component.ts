@@ -60,7 +60,11 @@ export class ProductAddComponent implements OnInit {
       cantidad_stock:0,
     };
     this.productService.postProduct(this.createProduct)
-      .subscribe(rest=>console.log(rest));
+      .subscribe(
+        rest=>{
+          console.log(rest)
+          this.router.navigate(['home']);
+      });
   }
 
 }

@@ -27,6 +27,7 @@ export class ProductService {
   }
 
   editProductById(product: Product, id: number):Observable<Product| undefined>{
+    if(!id) throw Error("Id del producto es requerido");
     return this.http.put<Product>(this.api, product)
         .pipe(
             catchError(error => of(undefined))
