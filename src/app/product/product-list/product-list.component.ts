@@ -32,6 +32,9 @@ export class ProductListComponent implements OnInit {
     cantidad_stock: 14
   },
   ];
+
+  public listProduct: Product []= [];
+
   id: number = 0;
   titulo_products: string = "Listado de productos";
 
@@ -43,26 +46,22 @@ export class ProductListComponent implements OnInit {
   }
 
   listProductService(){
-    this.productService.getProducts().subscribe(
-      data => {
-        console.log({data});
-        // this.products = data;
-        // console.log(this.products);
-      }
-    );
+    this.productService.getProducts().subscribe((resp)=>{
+      this.listProduct = resp;
+    });
   }
 
   deleteProductById(id: number){
     this.productService.deleteProductById(id).subscribe(
-      ()=> this.listProductService()
+      () => this.listProductService()
     );
   }
 
-  editProductById(id: number){
+  // editProductById(product:Product ,id: number){
 
-    // this.productService.editProductById(product, id).subscribe(
-    //   ()=> this.listProductService()
-    // );
-  }
+  //   this.productService.editProductById(product, id).subscribe(
+  //     ()=> this.listProductService()
+  //   );
+  // }
 
 }
