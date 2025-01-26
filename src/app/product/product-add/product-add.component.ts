@@ -3,7 +3,9 @@ import { ProductService } from '../../service/product.service';
 import { Product } from '../interfaces/product.interface';
 import { CreateProduct } from '../interfaces/createProduct.interface';
 import { EventEmitter } from 'stream';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
+import { log } from 'console';
 
 @Component({
   selector: 'app-product-add',
@@ -32,19 +34,15 @@ export class ProductAddComponent implements OnInit {
     cantidad_stock: 0
   }
 
-  constructor(private productService: ProductService, private activeteRoute: ActivatedRoute){
+  constructor(private productService: ProductService,
+              private activeteRoute: ActivatedRoute,
+              private router: Router
+            )
+  {
 
   }
 
   ngOnInit(): void {
-    this.activeteRoute.params.subscribe((params: any) =>{
-      if(params.list){
-        console.log('Sin Id');
-      }
-      console.log({params: params});
-      console.log({id: params['id']});
-
-    });
 
   }
 
@@ -63,23 +61,6 @@ export class ProductAddComponent implements OnInit {
     };
     this.productService.postProduct(this.createProduct)
       .subscribe(rest=>console.log(rest));
-  }
-
-  returnBtnName(name: string): void{
-
-    console.log('CREAR');
-    console.log({name});
-
-
-  }
-
-  editProductById(id: number){
-    console.log({id});
-
-
-    // this.productService.editProductById(id).subscribe(
-    //   ()=> this.listProductService()
-    // );
   }
 
 }

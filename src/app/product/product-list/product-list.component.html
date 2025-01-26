@@ -22,7 +22,11 @@
         <td>{{product.cantidad_stock}}</td>
         <td>
           <button class="btn btn-danger m-2" (click)="deleteProductById(product.id)">X</button>
-          <a class="btn btn-warning" [routerLink]="['/add/product/'+product.id]"    routerLinkActive="router-link-active" >Editar</a>
+          <button class="btn btn-warning"
+                  [routerLink]="['/add/product',product.id]"    routerLinkActive="router-link-active"
+          >
+            Editar
+          </button>
         </td>
       </tr>
     </tbody>

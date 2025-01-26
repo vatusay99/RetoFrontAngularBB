@@ -10,28 +10,28 @@ import { Product } from '../interfaces/product.interface';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[] = [{
-    id: 1,
-    product_name: 'carro',
-    categori: 'Automovil',
-    price: 4500000.00,
-    cantidad_stock: 22
-  },
-  {
-    id: 2,
-    product_name: 'pelota',
-    categori: 'jugueteria',
-    price: 190000.00,
-    cantidad_stock: 10
-  },
-  {
-    id: 3,
-    product_name: 'Consola Xbox',
-    categori: 'Gamer',
-    price: 1700000.00,
-    cantidad_stock: 14
-  },
-  ];
+  // products: Product[] = [{
+  //   id: 1,
+  //   product_name: 'carro',
+  //   categori: 'Automovil',
+  //   price: 4500000.00,
+  //   cantidad_stock: 22
+  // },
+  // {
+  //   id: 2,
+  //   product_name: 'pelota',
+  //   categori: 'jugueteria',
+  //   price: 190000.00,
+  //   cantidad_stock: 10
+  // },
+  // {
+  //   id: 3,
+  //   product_name: 'Consola Xbox',
+  //   categori: 'Gamer',
+  //   price: 1700000.00,
+  //   cantidad_stock: 14
+  // },
+  // ];
 
   public listProduct: Product []= [];
 
