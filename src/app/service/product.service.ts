@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { Product } from '../product/interfaces/product.interface';
 import { CreateProduct } from '../product/interfaces/createProduct.interface';
 import { environments } from '../../environments/environments';
@@ -22,8 +22,12 @@ export class ProductService {
     return this.http.post<Product>(this.api, product);
   }
 
-  deleteProductById(id: number):Observable<any>{
-    return this.http.delete(this.api+`/${id}`);
+  deleteProductById(id: number):Observable<boolean>{
+    return this.http.delete(this.api+`/${id}`)
+      .pipe(
+        map(resp => true),
+        catchError(err => of(false)),
+      );
   }
 
   editProductById(product: Product, id: number):Observable<Product| undefined>{

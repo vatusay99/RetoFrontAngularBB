@@ -1,63 +1,86 @@
-<p>product-edit works!</p><app-navbar></app-navbar>
+<app-navbar></app-navbar>
 
 <div class="container mt-4 mb-3 bg-dark text-primary rounded p-3">
   <h1>{{title_edit}}</h1>
 </div>
 <div class="container">
-  <form class="p-3 mb-2 shadow bg-body rounded">
+  <form class="p-3 mb-2 shadow bg-body rounded" [formGroup]="editForm">
     <div class="mb-3">
-      <h5>Ingrese los datos para cada campo y luego de click en crear.</h5>
+      <h5>Ingrese los datos para cada campo y luego de click en el botón Actializar.</h5>
+    </div>
+
+    <div class="mb-3">
+      <input type="hidden"
+            class="form-control"
+            id="id"
+            aria-describedby="id"
+            name="id"
+            formControlName="id"
+      />
     </div>
 
     <div class="mb-3">
       <label for="product_name" class="form-label">Nombre del producto</label>
       <input type="text"
-            [(ngModel)]="productAfter.product_name"
             class="form-control"
             id="product_name"
             aria-describedby="product_nameHelp"
             name="product_name"
+            formControlName="product_name"
       />
-      <div id="product_nameHelp" class="form-text">Nombre es un campo requerido</div>
+      <div id="product_nameHelp"
+        class="form-text text-danger"
+        *ngIf="isValidField('product_name')"
+      >
+        {{getFieldErrors('product_name',"Nombre del producto")}}
+      </div>
     </div>
     <div class="mb-3">
       <label for="category" class="form-label">Categoria</label>
       <input type="text"
-              [(ngModel)]="productAfter.categori"
               class="form-control"
               id="category"
               name="categori"
               aria-describedby="categoriaHelp"
+              formControlName="categori"
       />
-      <div id="categoriaHelp" class="form-text">Campo categoria es requerido</div>
+      <div id="categoriaHelp"
+        class="form-text text-danger"
+        *ngIf="isValidField('categori')"
+        >{{getFieldErrors('categori',"Categoria")}}
+      </div>
     </div>
 
     <div class="mb-3">
       <label for="price" class="form-label">Precio unidad</label>
       <input type="number"
-              [(ngModel)]="productAfter.price"
               class="form-control"
               id="price"
               name="price"
               aria-describedby="precioHelp"
+              formControlName="price"
       >
-      <div id="precioHelp" class="form-text">Valor del precio es requerido</div>
+      <div id="priceHelp"
+      class="form-text text-danger"
+      *ngIf="isValidField('price')"
+      >
+        {{getFieldErrors('price',"Precio")}}
+      </div>
     </div>
 
     <div class="mb-3">
       <label for="cantidad_stock" class="form-label">Stock en unidades disponibles</label>
       <input type="number"
-              [(ngModel)]="productAfter.cantidad_stock"
               class="form-control"
               id="cantidad_stock"
               name="cantidad_stock"
-              aria-describedby="stockHelp">
+              aria-describedby="stockHelp"
+              formControlName="cantidad_stock"
+              >
       <div id="stockHelp" class="form-text">Campo stock es requerido {{id_pro}}</div>
     </div>
 
     <button type="submit" class="btn btn-primary" (click)="editProductByIdCom(id_pro)" >Actializar</button>
-
-    <!-- <app-btn-primary></app-btn-primary>  " -->
   </form>
   <br><br><br>
 </div>
